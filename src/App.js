@@ -1,12 +1,16 @@
 import './App.css';
 
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import NavBar from './component/NavBar';
+import News from './component/News';
 
 export default class App extends Component {
-  c='Sonu';
   render() {
     return (
-      <div>Hello my first class base Component {this.c}</div>
+      <div>
+        <NavBar/>
+        <News/>
+      </div>
     )
   }
 }
