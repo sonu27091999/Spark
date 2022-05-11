@@ -14,15 +14,19 @@ export class News extends Component {
         pageSize: PropTypes.number,
         category: PropTypes.string
     }
-    constructor() {
-        super();
-        console.log('Hello i am a constructor from news component');
+    capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    constructor(props) {
+        super(props);
+        // console.log('Hello i am a constructor from news component');
         this.state = {
             articles: [],
             loading: false,
             page: 1,
             totalResults: 0
         }
+        document.title = `${this.capitalizeFirstLetter(this.props.category)}  | NewsMonkey`;
     }
     componentDidMount() {
         // console.log('cdm');
@@ -43,7 +47,7 @@ export class News extends Component {
         this.setState({ loading: true });
         let data = await fetch(url);
         let parseData = await data.json();
-        console.log(parseData);
+        // console.log(parseData);
         this.setState({
             articles: parseData.articles,
             totalResults: parseData.totalResults,
@@ -84,10 +88,10 @@ export class News extends Component {
     }
 
     render() {
-        console.log('render');
+        // console.log('render');
         return (
             <div className='container my-3'>
-                <h1 className='text-center'>NewsMonkey - Top headlines</h1>
+                <h1 className='text-center'>NewsMonkey - Top headlines from {this.capitalizeFirstLetter(this.props.category)}</h1>
                 {this.state.loading && <Spinner />}
                 <div className="row my-3">
                     {!this.state.loading && this.state.articles.map((element) => {
