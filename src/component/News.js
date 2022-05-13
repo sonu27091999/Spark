@@ -9,13 +9,13 @@ const News = (props) => {
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0)
-    // document.title = `${capitalizeFirstLetter(props.category)}  | NewsMonkey`;
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+    document.title = `${capitalizeFirstLetter(props.category)}  | NewsMonkey`;
     const fetchMoreData = async () => {
-        setPage(page + 1);
-        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`;
+        setPage(page + 1);  //{ here we swap setPage(page +1) with const url bcz setPage(page+1) is ascynchrounus function and it will take few time to set page--> page+1 but url const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`; so rerendering same page again so we can see console error like children should be unique key like that  } so we manually set page-->page+1 in const url  {`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`; and then setState(page+1) so that we ensure that next page is loaded;
         setLoading(true);
         let data = await fetch(url);
         let parseData = await data.json();
@@ -25,6 +25,7 @@ const News = (props) => {
     };
     useEffect(() => {
         updateNews();
+        // eslint - disable - next - line;
     }, [])
 
     const updateNews = async () => {
@@ -40,18 +41,9 @@ const News = (props) => {
         setLoading(false);
         props.setProgress(100);
     }
-    const handlePreviousClick = () => {
-        setPage(page - 1);
-        updateNews();
-    }
-    const handleNextClick = () => {
-        setPage(page + 1);
-        updateNews();
-    }
-
     return (
         <>
-            <h1 className='text-center'>NewsMonkey - Top headlines from {capitalizeFirstLetter(props.category)}</h1>
+            <h1 className='text-center' style={{ marginTop: "90px" }}>NewsMonkey - Top headlines from {capitalizeFirstLetter(props.category)}</h1>
             {loading && <Spinner />}
             <InfiniteScroll
                 dataLength={articles.length}
