@@ -1,6 +1,4 @@
-# SPARK-website
-A website for the magazine of IIITL
-
+This Repository is OPTED-IN for Hackotoberfest
 
 ## Rules to contribute:
 - Ask me to assign the issue in the respective issue if that issue is not assigned to anyone

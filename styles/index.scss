@@ -1,0 +1,256 @@
+*{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+$primary-color: black;
+$padding: 3rem 10rem;
+$font-size-text: 1rem;
+$font-size-heading: 4rem;
+$image-containing-height:35.6rem;
+$navbarcolor: rgb(56, 54, 54);
+$bg-color: #FFDEB4;
+
+@mixin verticalText {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 1rem;
+}
+
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@font-face {
+    font-family: "Spark";
+    src: url(../fonts/Spark-font.tiff);
+}
+
+body{
+    font-size: 3em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #FFDEB4;
+}
+
+// Navigation bar
+
+// .nav-bar{
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     background-color: $navbarcolor;
+//     color: whitesmoke;
+// }
+
+// .nav-bar .logo
+// {
+//     font-size: 2rem;
+//     margin: .75rem;
+// }
+// .nav-bar-list{
+//     display: flex;
+//     font-size: 1rem;
+//     list-style-type: none;
+// }
+
+// .nav-bar-list-items
+// {
+//     color: whitesmoke;
+//     padding: 1rem;
+//     transition: 0.2s;
+//     display: block;
+// }
+
+// .cursor{
+//     position: fixed;
+//     width: 16px;
+//     height: 16px;
+//     border-radius: 50%;
+//     background-color: whitesmoke;
+//     transition: 0.1s ease-out;
+//     transform: translate(-50%,-50%);
+//     mix-blend-mode: exclusion;
+//     pointer-events: none;
+//     display: none;
+// }
+
+// .nav-bar-list li:hover ~ .cursor{
+//     display: block;
+//     transform: scale(3);
+// }
+
+// // Hamburger in navigation bar
+
+// .toggle-button{
+//     position: absolute;
+//     top: 1.5rem;
+//     right: 1rem;
+//     display: none;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     width: 30px;
+//     height: 21px;
+// }
+
+// .toggle-button .bar{
+//     height: 3px;
+//     width: 100%;
+//     background-color: whitesmoke;
+//     border-radius: 10px
+// }
+
+
+
+// Body of the home page
+
+.home-magazine{
+    @include flexCenter();
+    justify-content: flex-start;
+    padding: $padding;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+.heading-text{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.heading-text .heading-text-1{
+    font-size: $font-size-heading;
+    justify-items: center;
+    align-self: center;
+    font-family: Spark;
+}
+.heading-text .heading-text-2{
+    display: flex;
+    flex-direction: column;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: $font-size-text;
+}
+.heading-text .heading-text-2 > div{
+    margin-left: 0.3rem;
+    width: 0.4rem;
+    height: 3.3rem; 
+    background-color: rgb(240, 159, 105);
+    align-self: flex-start;
+    border-radius: 3px;
+}
+.home-container .date{
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+    color: grey;
+}
+
+.image-container
+{
+    @include flexCenter();
+    margin-top: 1rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.image-container .text-container{
+    // margin-right: 3rem;
+    height: $image-containing-height - 2;
+    @include flexCenter();
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: justify;
+    text-justify: inter-word; 
+    font-size: $font-size-text;
+}
+
+.image-container .text-container-1{
+    
+    @include verticalText();
+    
+}
+
+.image-container .color-block-1{
+    margin: 2rem 0rem;
+    height: 0.9rem;
+    width: 5.3rem;
+    background-color: rgb(240, 159, 105);
+    align-self: flex-start;
+    border-radius: 3px;
+    
+}
+
+.image-container .text-container-2s{
+    
+    @include verticalText();
+    
+}
+
+.image-containing{
+    width: 30rem;
+    height: $image-containing-height;
+    background: no-repeat url(../Radha.webp);
+    background-size: cover;
+}
+
+// Resposive model
+
+@media (max-width: 800px)
+{
+
+    $padding-resposive: 0rem 1rem;
+
+    // .home-magazine{
+    //     padding: $padding-resposive;
+    // }
+    // .toggle-button{
+    //     display: flex;
+    // }
+    // .nav-bar .nav-bar-list{
+    //     display: none;
+    // }
+    // .nav-bar
+    // {
+    //     flex-direction: column;
+    //     align-items: flex-start;   
+    //     text-align: center;
+    // }
+    
+    // .nav-bar-list
+    // {
+    //     background-color: $navbarcolor;
+    //     position: absolute;
+    //     top: 4rem;
+    //     width: 100%;
+    //     flex-direction: column;
+    //     width: 100%;
+    //     height:100vh;
+    //     z-index: 1;
+    // }
+    
+    // .nav-bar-list-items
+    // {
+    //     padding-bottom: 3rem;
+    //     overflow-y: hidden;        
+    // }
+
+    // .nav-bar-list.active{
+    //     display: flex;
+    //     justify-content: center;
+    //     overflow-y: hidden;
+    // }
+
+    .image-containing{
+        left: 0rem;
+    }
+
+    .image-container
+    {
+        flex-wrap: wrap;
+    }
+}

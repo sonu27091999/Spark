@@ -1,0 +1,173 @@
+*{
+  text-decoration: none;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface");
+.heading {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.articles {
+  width: 100%;
+  height: 80%;
+  overflow: hidden;
+  counter-reset: section;
+}
+
+.article {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: transform 1s cubic-bezier(0.2, 0, 0.2, 1), z-index 0.1s linear 1s;
+  z-index: 1;
+  visibility: hidden;
+  transform: translateX(calc(20% * (var(--i) - 1)));
+}
+.article:nth-child(1) {
+  --i: 1;
+}
+.article:nth-child(2) {
+  --i: 2;
+}
+.article:nth-child(3) {
+  --i: 3;
+}
+.article:nth-child(4) {
+  --i: 4;
+}
+.article:nth-child(5) {
+    --i: 5;
+  }
+.article .inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-80%);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: inherit;
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+}
+.article img {
+  display: block;
+  width: 100%;
+  height: 80%;
+  flex: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: inherit;
+  transform: translateX(20%) scale(1.25);
+  transform-origin: center bottom;
+  position: relative; 
+  z-index: 2;
+}
+.article .article-content{
+    margin-left: 20%;
+  display: block;
+  flex: 0 0 auto;
+  width: 20%;
+  transform: translateX(300%);
+  padding: 0.75em;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: flex-start;
+  transition: transform 1s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.3s linear;
+}
+.article .article-content::before {
+  display: block;
+  counter-increment: section;
+  content: "0" counter(section);
+  font-size: 3rem;
+  line-height: 1;
+  margin-right: 0.2em;
+  border-bottom: solid 0.1em;
+}
+
+.content {
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  right: 0;
+  padding: inherit;
+  transition: opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(60%);
+}
+.content h1 {   
+  margin-bottom: 0.2em;
+}
+
+.articles.full .article {
+  transform: translateX(-20%);
+}
+.articles.full .article .article-content {
+  opacity: 0;
+}
+.articles.full .article.full ~ .article {
+  transform: translateX(100%);
+}
+.articles.full .article.full {
+  transform: translateX(0);
+  transition-delay: 0s, 0s;
+  z-index: 999;
+}
+.articles.full .article.full .inner,
+.articles.full .article.full img {
+  transform: translateX(0);
+}
+.articles.full + .content {
+  opacity: 1;
+  transition-delay: 0.5s;
+  transform: none;
+}
+
+*,
+*:before,
+*:after {
+  position: relative;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Abril Fatface", serif;
+  color: #0f0f0f;
+}
+
+site {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #325499;
+}
+
+#site {
+  width: 90vw;
+  height: 80vh;
+  background-color: #fff;
+  box-shadow: 0 5vw 10vw rgba(0, 0, 0, 0.15);
+  padding: 0 4vw;
+  overflow: hidden;
+}
+
+.readmore{
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+}
+
+.readmore:hover{
+  color: #325499;
+}
+
